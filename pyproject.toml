@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vision-object-detection"
+version = "0.1.0"
+description = "Open-source Python web app for general object detection."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "RealVision Labs" }
+]
+keywords = [
+  "object-detection",
+  "computer-vision",
+  "opencv",
+  "fastapi",
+  "yolo",
+]
+dependencies = [
+  "fastapi==0.115.6",
+  "uvicorn[standard]==0.34.0",
+  "jinja2==3.1.5",
+  "opencv-python==4.10.0.84",
+  "numpy==2.2.1",
+  "ultralytics==8.3.59",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/RealVision-Labs/vision-object-detection"
+Repository = "https://github.com/RealVision-Labs/vision-object-detection"
+Issues = "https://github.com/RealVision-Labs/vision-object-detection/issues"
+
+[tool.setuptools.packages.find]
+include = ["vision_object_detection*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

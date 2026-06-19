@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vision Object Detection</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+  </head>
+  <body>
+    <main class="app-layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">RV</span>
+          <div>
+            <h1>Vision Object Detection</h1>
+            <p>General detection workspace</p>
+          </div>
+        </div>
+        <section class="camera-card">
+          <span class="label">Camera</span>
+          <strong id="cameraState">Checking</strong>
+          <div class="camera-actions">
+            <button id="startButton" class="primary-button" type="button">Start</button>
+            <button id="stopButton" type="button">Stop</button>
+          </div>
+          <p id="statusText">Checking camera...</p>
+        </section>
+        <section class="control-panel">
+          <div class="control-row">
+            <div>
+              <span class="label">Confidence</span>
+              <strong id="confidenceValue">0.35</strong>
+            </div>
+            <input id="confidenceSlider" type="range" min="0.05" max="0.95" step="0.05" value="0.35">
+          </div>
+          <div class="zone-actions">
+            <button id="drawZoneButton" type="button">Draw Zone</button>
+            <button id="clearZoneButton" type="button">Clear</button>
+          </div>
+          <p id="zoneStatus" class="muted">Zone filter is off.</p>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="workspace-header">
+          <div>
+            <span class="label">Mode</span>
+            <h2>Live Detection</h2>
+          </div>
+          <div class="status-pill" id="detectionCount">0 detections</div>
+        </header>
+
+        <section class="viewer-grid">
+          <div class="stream-stage">
+            <img id="streamImage" alt="Live object detection stream">
+            <canvas id="zoneCanvas" aria-label="Detection zone drawing layer"></canvas>
+            <div id="emptyState">
+              <strong>Camera stopped</strong>
+              <span>Start the camera to begin detection.</span>
+            </div>
+          </div>
+          <aside class="inspector">
+            <section class="inspector-section">
+              <span class="label">Object Counter</span>
+              <div id="objectCounter" class="counter-list">No objects counted yet.</div>
+            </section>
+            <section class="inspector-section">
+              <span class="label">Detected Objects</span>
+              <div id="detectionsList" class="detections-list">No detections yet.</div>
+            </section>
+            <section class="inspector-section">
+              <span class="label">Detector</span>
+              <strong id="detectorName">Checking detector</strong>
+              <p id="detectorMessage" class="muted">Loading detector status...</p>
+            </section>
+          </aside>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="/static/js/app.js"></script>
+  </body>
+</html>
